@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/main.css">
+    <link rel="icon" type="image/x-icon" href="/assets/logo.jpg">
+</head>
+<body>
+    <header class="menu">
+        <div class="logo">Портфолио</div>
+        <nav>
+            <ul class="menu_list">
+                <li><a href="/base/index.html">Обо мне</a></li>
+                <li><a href="/base/blog.html" class="active">Блог</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="information_blog">
+            <div class="intro_text">
+                <h1>Мой блог</h1>
+                <p>Здесь собраны лучшие статьи по web-разработке и дизайну интерфейсов.</p>
+            </div>
+            <div class="intro_image">
+                <img src="/assets/BLOG.jpeg" alt="Polina" width="450">
+            </div>
+        </section>
+
+        <section class="projects">
+            <div class="projects_list">
+                <a href="https://habr.com/ru/hubs/angular/articles/" class="card main_card">
+                    <div class="card_image">
+                        <img src="/assets/blog1.jpeg" alt="article">
+                        <div class="hover_overlay">
+                            <span>Читать статью</span>
+                        </div>
+                    </div>
+                    <div class="card_content">
+                        <h2>react-ui-kit-forms: новая библиотека в стиле Angular</h2>
+                        <p>Как использовать преимущества реактивности RxJS и подходы Angular в экосистеме React или Node.js для работы с формами.</p>
+                        <span class="date">2 Марта, 2026</span>
+                    </div>
+                </a>
+
+                <a href="https://habr.com/ru/articles/348818/" class="card small_card">
+                    <div class="card_image">
+                        <img src="/assets/blog2.jpeg" alt="article">
+                        <div class="hover_overlay">
+                            <span>Читать статью</span>
+                        </div>
+                    </div>
+                    <div class="card_content">
+                        <h3>Удивительный Angular: что с ним сейчас?</h3>
+                        <span class="date">12 Февраля, 2018</span>
+                    </div>
+                </a>
+
+                <a href="https://habr.com/ru/articles/1011954/" class="card small_card">
+                    <div class="card_image">
+                        <img src="/assets/blog3.jpeg" alt="article">
+                        <div class="hover_overlay">
+                            <span>Читать статью</span>
+                        </div>
+                    </div>
+                    <div class="card_content">
+                        <h3>Как писать лонгриды для SEO в 2026 году</h3>
+                        <span class="date">18 Марта, 2026</span>
+                    </div>
+                </a>
+
+                <a href="https://habr.com/ru/news/1011958/" class="card small_card">
+                    <div class="card_image">
+                        <img src="/assets/blog4.jpeg" alt="article">
+                        <div class="hover_overlay">
+                            <span>Читать статью</span>
+                        </div>
+                    </div>
+                    <div class="card_content">
+                        <h3>Нейросеть AIRI для предсказания свойств</h3>
+                        <span class="date">18 Марта, 2026</span>
+                    </div>
+                </a>
+
+                <a href="https://habr.com/ru/hubs/javascript/articles/" class="card small_card">
+                    <div class="card_image">
+                        <img src="/assets/blog5.jpeg" alt="article">
+                        <div class="hover_overlay">
+                            <span>Читать статью</span>
+                        </div>
+                    </div>
+                    <div class="card_content">
+                        <h3>Пишем Pac-Man на чистом JavaScript</h3>
+                        <span class="date">18 Марта, 2026</span>
+                    </div>
+                </a>
+
+                <a href="https://habr.com/ru/companies/ruvds/articles/429552/" class="card small_card">
+                    <div class="card_image">
+                        <img src="/assets/blog6.jpeg" alt="article">
+                        <div class="hover_overlay">
+                            <span>Читать статью</span>
+                        </div>
+                    </div>
+                    <div class="card_content">
+                        <h3>Руководство по JavaScript: часть 1</h3>
+                        <span class="date">6 Июня, 2022</span>
+                    </div>
+                </a>
+
+                <a href="https://habr.com/ru/companies/ruvds/articles/877114/" class="card small_card">
+                    <div class="card_image">
+                        <img src="/assets/blog7.jpeg" alt="article">
+                        <div class="hover_overlay">
+                            <span>Читать статью</span>
+                        </div>
+                    </div>
+                    <div class="card_content">
+                        <h3>CSS в 2025: новые фишки языка</h3>
+                        <span class="date">11 Февраля, 2025</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="button_container">
+                <a href="https://habr.com/ru/articles/" class="button_article2">Узнать больше</a>
+            </div>
+        </section>
+        <section class="create_post container">
+            <div class="post_editor">
+                <div class="editor_header">
+                    <span class="editor_badge">Новая статья</span>
+                    <h2>Создать новую публикацию</h2>
+                </div>
+                
+                <div class="input_field">
+                    <input type="text" class="title_input" placeholder="Заголовок статьи...">
+                </div>
+                
+                <div class="input_field">
+                    <textarea class="content_input" placeholder="Начните писать..."></textarea>
+                </div>
+                
+                <div class="editor_footer">
+                    <button class="add_post_btn">
+                        Отмена 
+                    </button>
+                    <button class="add_post_btn">
+                        Опубликовать статью
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="contacts">
+        <div class="footer_inf">
+            <div class="information">
+                <h1 class="mini_subtitle">Информация для связи</h1>
+                <p>Телефон: +7 777 777 77 77</p>
+                <p>Email: maschkovapolina@yandex.ru</p>
+                <div class="icon_contact">
+                    <a href="https://t.me/rupollya" target="_blank"><img src="/assets/telegram.svg" alt="Telegram"></a>
+                    <a href="https://vk.com/rupolll_ya" target="_blank"><img src="/assets/vk.svg" alt="vk"></a>
+                    <a href="https://www.tiktok.com/@whoisrupollya" target="_blank"><img src="/assets/tiktok.svg" alt="tt"></a>
+                </div>
+            </div>
+
+            <div class="form">
+                <div class="input_group">
+                    <label>EMAIL</label>
+                    <input type="email" placeholder="Напиши мне свой email...">
+                </div>
+
+                <div class="input_group">
+                    <label>СООБЩЕНИЕ</label>
+                    <textarea placeholder="Введи текст..."></textarea>
+                </div>
+
+                <button class="send_btn">Отправить</button>
+            </div>
+        </div>
+        <p class="inc">© 2026 Brand, Inc</p>
+    </footer>
+</body>
+</html>

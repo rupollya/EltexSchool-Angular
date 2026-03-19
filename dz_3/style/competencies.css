@@ -1,0 +1,75 @@
+.competencies {
+    display: flex;
+    flex-direction: column;
+    gap: 60px; 
+}
+
+.skills {
+    height: auto; 
+    padding-bottom: 20px;
+}
+
+.skills > div p {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.skills_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(2, auto);
+    gap: 30px;
+}
+
+.skills_list h4 {
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    color: var(--primary-color);
+}
+
+.work {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: auto; 
+    gap: 40px;
+}
+
+.my_work {
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+    gap: 5px;
+}
+
+.work_item {
+    display: flex;  
+    gap: 20px;  
+    padding: 20px 0; 
+    border-bottom: 1px solid var(--border-color);  
+    transition: var(--transition);
+}
+
+.work_item:hover {
+    background-color: #fffaf5;  
+    transform: translateX(10px); 
+    border-bottom-color: var(--secondary-accent);  
+}
+
+.work_item img {
+    width: 80px;  
+    height: auto;
+}
+
+.work_content {
+    display: flex;
+    flex-direction: column;
+}
+
+.work_content a {
+    color: var(--secondary-accent);
+    font-weight: 500;
+}
+
+.work_content a:hover {
+    text-decoration: underline;
+}
