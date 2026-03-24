@@ -1,0 +1,55 @@
+.about_me {
+    min-height: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.about_me a {
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 5px;
+    transition: var(--transition);
+    color: var(--accent-color);
+}
+
+.about_me a .arrow-icon { 
+    font-weight: 300;      
+    transition: transform 0.3s ease;
+    color: var(--accent-color);
+}
+
+.about_me a:hover {
+   color: var(--accent-hover);
+}
+
+.about_me a:hover .arrow-icon {
+    transform: translateX(5px);
+    color: var(--accent-hover);
+}
+
+.about_me > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+}
+
+.about_me > div:last-child {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.about_me > div:last-child img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0 0 100px 100px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 40%);
+    mask-image: linear-gradient(to bottom, transparent 5%, black 40%);
+    transition: var(--transition);
+}
+
+.about_me > div:last-child img:hover {
+    transform: scale(1.05);
+}
