@@ -31,7 +31,7 @@ function toggleVisibility() {
 }
 
 // Добавление новой статьи через template
-function newPublish() {
+function newPublish(event) {
     const titleInputElement = document.getElementById('title_input');
     const contentInputElement = document.getElementById('content_input');
     const titleError = document.getElementById('title-error');
@@ -76,6 +76,18 @@ function newPublish() {
     // шаблон
     const template = document.getElementById('article-template');
     const newPost = template.content.cloneNode(true);
+
+    // удаление
+    const deleteBtn = newPost.querySelector('#delete-btn');
+    if (deleteBtn) {
+        deleteBtn.addEventListener('click', function() {
+            const article = this.closest('.article_blog');
+            if (article) {
+                article.remove();
+            }
+        });
+    }
+
     newPost.querySelector('.date').textContent = formattedDate; 
     newPost.querySelector('.post-title').textContent = titleValue;
     const contentField = newPost.querySelector('.post-content');
@@ -84,7 +96,7 @@ function newPublish() {
     newPost.querySelector('.card_image img').src = randomImage;
 
     projectsList.appendChild(newPost);
-
+    event.preventDefault()
     titleInputElement.value = '';
     contentInputElement.value = '';
     
@@ -92,3 +104,10 @@ function newPublish() {
         toggleVisibility();
     }
 }
+
+
+// сброс формы
+const form = document.querySelector('#form-create-article')
+  form.addEventListener('reset', function (evt) {
+    console.log(evt)
+  })

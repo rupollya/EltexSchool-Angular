@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style/main.css">
     <link rel="icon" type="image/x-icon" href="../assets/logo.jpg">
-    <script src="../js/blog.js"></script> 
+    <script src="../js/blog.js" defer></script> 
 </head>
 <body>
     <header class="menu">
@@ -17,7 +17,7 @@
         <nav>   
             <ul class="menu_list">
                 <li><a href="index.html">Обо мне</a></li>
-                <li><a href="blog.html" class="active">Блог</a></li>
+                <li><a class="active" href="blog.html">Блог</a></li>
                 <li><a href="#contacts">Контакты</a></li>
             </ul>
         </nav>
@@ -135,7 +135,7 @@
 
         <section class="create_post editor-wrapper-grid">
     
-            <div id="form-create-article" class="post_editor">
+            <form id="form-create-article" class="post_editor">
                 <div class="editor_header">
                     <span class="editor_badge">Новая статья</span>
                     <h2>Создать новую публикацию</h2>
@@ -155,10 +155,15 @@
                 </div>
                 
                 <div class="editor_footer">
-                    <button class="add_post_btn cancel" onclick="toggleVisibility()">Отмена</button>
-                    <button class="add_post_btn publish" onclick="newPublish()">Опубликовать статью</button>
+                    <div>
+                        <button type="button" class="add_post_btn cancel" onclick="toggleVisibility(event)">Отмена</button>
+                        <input type="reset" class="add_post_btn reset" value="Сбросить">
+                    </div>
+                    <div>
+                        <button type="button"class="add_post_btn publish" onclick="newPublish(event)">Опубликовать статью</button>
+                    </div>
                 </div>
-            </div>
+            </form>
 
             <template id="article-template">
                 <a src="#" class="card small_card article_blog">
@@ -172,6 +177,7 @@
                         <h3 id="post-title" class="post-title"></h3>
                         <p id="post-content" class="post-content"></p>
                         <span id="post-date" class="date"></span>
+                        <button id="delete-btn" class="delete-btn">&times;</button>
                     </div>
                 </a>
             </template>

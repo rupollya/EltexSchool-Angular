@@ -33,6 +33,10 @@
     padding: 0;     
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     color: var(--primary-color);
@@ -122,6 +126,12 @@ p {
 .menu_list a:hover {
     color: var(--accent-color);
     text-shadow: 0.5px 0 0 var(--accent-color);
+}
+
+.menu_list a.active {
+    color: var(--accent-color);
+    font-weight: 800;
+    border-bottom: 2px solid var(--accent-color);
 }
 
 footer {
