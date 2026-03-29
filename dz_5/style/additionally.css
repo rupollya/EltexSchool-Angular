@@ -23,7 +23,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
-
+/* ===========КАРТОЧКИ============= */
 .card {
     background: var(--bg-card);
     border-radius: 16px;
@@ -33,37 +33,33 @@
     transition: var(--transition);
     border: 1px solid rgba(0,0,0,0.03);
 }
+.card .card_image {
+    aspect-ratio: 16 / 10;
+    width: 100%; 
+}
+
+.card .card_content {
+    padding: 25px;
+}
 
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
-.main_card {
+.card:first-child {
     grid-column: 1 / 4;
     flex-direction: row;  
     margin-bottom: 20px;
 }
 
-.main_card .card_image {
+.card:first-child .card_image {
     width: 65%;
     height: 480px;
 }
-
-.main_card .card_content {
-    width: 35%;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.small_card .card_image {
-    aspect-ratio: 16 / 10;
-}
-
-.small_card .card_content {
-    padding: 25px;
+ 
+.projects_list .card:not(:first-child) .post-content {
+    display: none;
 }
 
 .card_image {

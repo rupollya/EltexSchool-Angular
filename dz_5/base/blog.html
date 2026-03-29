@@ -34,108 +34,16 @@
         </section>
 
         <section class="projects">
-            <div class="projects_list">
-                <a href="https://habr.com/ru/hubs/angular/articles/" class="card main_card article_blog">
-                    <div class="card_image">
-                        <img src="../assets/blog1.jpeg" alt="article">
-                        <div class="hover_overlay">
-                            <span>Читать статью</span>
-                        </div>
-                    </div>
-                    <div class="card_content">
-                        <h2>react-ui-kit-forms: новая библиотека в стиле Angular</h2>
-                        <p>Как использовать преимущества реактивности RxJS и подходы Angular в экосистеме React или Node.js для работы с формами.</p>
-                        <span class="date">2 Марта, 2026</span>
-                    </div>
-                </a>
-
-                <a href="https://habr.com/ru/articles/348818/" class="card small_card article_blog">
-                    <div class="card_image">
-                        <img src="../assets/blog2.jpeg" alt="article">
-                        <div class="hover_overlay">
-                            <span>Читать статью</span>
-                        </div>
-                    </div>
-                    <div class="card_content">
-                        <h3>Удивительный Angular: что с ним сейчас?</h3>
-                        <span class="date">12 Февраля, 2018</span>
-                    </div>
-                </a>
-
-                <a href="https://habr.com/ru/articles/1011954/" class="card small_card article_blog">
-                    <div class="card_image">
-                        <img src="../assets/blog3.jpeg" alt="article">
-                        <div class="hover_overlay">
-                            <span>Читать статью</span>
-                        </div>
-                    </div>
-                    <div class="card_content">
-                        <h3>Как писать лонгриды для SEO в 2026 году</h3>
-                        <span class="date">18 Марта, 2026</span>
-                    </div>
-                </a>
-
-                <a href="https://habr.com/ru/news/1011958/" class="card small_card article_blog">
-                    <div class="card_image">
-                        <img src="../assets/blog4.jpeg" alt="article">
-                        <div class="hover_overlay">
-                            <span>Читать статью</span>
-                        </div>
-                    </div>
-                    <div class="card_content">
-                        <h3>Нейросеть AIRI для предсказания свойств</h3>
-                        <span class="date">18 Марта, 2026</span>
-                    </div>
-                </a>
-
-                <a href="https://habr.com/ru/hubs/javascript/articles/" class="card small_card article_blog">
-                    <div class="card_image">
-                        <img src="../assets/blog5.jpeg" alt="article">
-                        <div class="hover_overlay">
-                            <span>Читать статью</span>
-                        </div>
-                    </div>
-                    <div class="card_content">
-                        <h3>Пишем Pac-Man на чистом JavaScript</h3>
-                        <span class="date">18 Марта, 2026</span>
-                    </div>
-                </a>
-
-                <a href="https://habr.com/ru/companies/ruvds/articles/429552/" class="card small_card article_blog">
-                    <div class="card_image">
-                        <img src="../assets/blog6.jpeg" alt="article">
-                        <div class="hover_overlay">
-                            <span>Читать статью</span>
-                        </div>
-                    </div>
-                    <div class="card_content">
-                        <h3>Руководство по JavaScript: часть 1</h3>
-                        <span class="date">6 Июня, 2022</span>
-                    </div>
-                </a>
-
-                <a href="https://habr.com/ru/companies/ruvds/articles/877114/" class="card small_card article_blog">
-                    <div class="card_image">
-                        <img src="../assets/blog7.jpeg" alt="article">
-                        <div class="hover_overlay">
-                            <span>Читать статью</span>
-                        </div>
-                    </div>
-                    <div class="card_content">
-                        <h3>CSS в 2025: новые фишки языка</h3>
-                        <span class="date">11 Февраля, 2025</span>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="button_container">
-                <a href="https://habr.com/ru/articles/" class="button_article2">Узнать больше</a>
+            <div id="projects_null_list" style="display: none;"> 
+                    <p style="text-align: center;">Статей нет</p>
+               </div>
+            <div id="projects-list" class="projects_list">
             </div>
         </section>
 
         <section class="create_post editor-wrapper-grid">
     
-            <form id="form-create-article" class="post_editor">
+            <form id="form-create-article" class="post_editor" novalidate>
                 <div class="editor_header">
                     <span class="editor_badge">Новая статья</span>
                     <h2>Создать новую публикацию</h2>
@@ -160,51 +68,16 @@
                         <input type="reset" class="add_post_btn reset" value="Сбросить">
                     </div>
                     <div>
-                        <button type="button"class="add_post_btn publish" onclick="newPublish(event)">Опубликовать статью</button>
+                        <button type="submit" class="add_post_btn publish">Опубликовать статью</button>
                     </div>
                 </div>
             </form>
-
-            <template id="article-template">
-                <a src="#" class="card small_card article_blog">
-                    <div class="card_image">
-                        <img alt="article">
-                        <div class="hover_overlay">
-                            <span>Читать статью</span>
-                        </div>
-                    </div>
-                    <div class="card_content">
-                        <h3 id="post-title" class="post-title"></h3>
-                        <p id="post-content" class="post-content"></p>
-                        <span id="post-date" class="date"></span>
-                        <button id="delete-btn" class="delete-btn">&times;</button>
-                    </div>
-                </a>
-            </template>
-
             <div class="admin_panel">
                 <div class="panel_content">
                     <button class="side_btn" title="создать статью"><img src="../assets/browser-cloning-plus.svg" width="40" onclick="toggleVisibility()"></button>
                     <button class="side_btn" title="статистика"><img src="../assets/statistics.svg" width="40" onclick="onStatistics()"></button>
                 </div>
             </div>
-            <!-- окошко со статой -->
-            <dialog id="pop-up">
-                <div class="header_state">
-                    <h2>Статистика страницы</h2>
-                    <button id="close-dialog" class="close-btn" onclick="onClose()">&times;</button>
-                </div>
-                <div class="content_pop_up">
-                    <div class="allArticle elem_pop">
-                        <p>Всего статей</p>
-                        <h2 id="coutArticles"></h2>
-                    </div>
-                    <div class="comments elem_pop">
-                        <p>Комментарии</p>
-                        <h2 id="comment"></h2>
-                    </div>
-                </div>
-            </dialog>
         </section>
     </main>
     <footer id="contacts">
@@ -236,5 +109,40 @@
         </div>
         <p class="inc">© 2026 Brand, Inc</p>
     </footer>
+
+ <!-- окошко со статой -->
+<dialog id="pop-up">
+    <div class="header_state">
+        <h2>Статистика страницы</h2>
+        <button id="close-dialog" class="close-btn" onclick="onClose()">&times;</button>
+    </div>
+    <div class="content_pop_up">
+        <div class="allArticle elem_pop">
+            <p>Всего статей</p>
+            <h2 id="coutArticles"></h2>
+        </div>
+        <div class="comments elem_pop">
+            <p>Комментарии</p>
+            <h2 id="comment"></h2>
+        </div>
+    </div>
+</dialog>
+<!-- Шаблон для статьи -->
+<template id="article-template">
+    <a src="#" class="card small_card article_blog">
+        <div class="card_image">
+            <img alt="article">
+            <div class="hover_overlay">
+                <span>Читать статью</span>
+            </div>
+        </div>
+        <div class="card_content">
+            <h3 id="post-title" class="post-title"></h3>
+            <p id="post-content" class="post-content"></p>
+            <span id="post-date" class="date"></span>
+            <button id="delete-btn" class="delete-btn">&times;</button>
+        </div>
+    </a>
+</template>
 </body>
 </html>
