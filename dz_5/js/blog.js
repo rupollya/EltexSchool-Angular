@@ -1,15 +1,45 @@
+class Post {
+    constructor(id, title, content, image, date) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.image = image;
+        this.date = date;
+    }
+
+    createDOMElement() {
+        const template = document.getElementById('article-template');
+        const newPost = template.content.cloneNode(true);
+
+        const articleRoot = newPost.querySelector('.article_blog');
+        articleRoot.dataset.id = this.id;
+
+        // наполняем данными из объекта
+        newPost.querySelector('.post-title').textContent = this.title;
+        newPost.querySelector('.post-content').textContent = this.content;
+        newPost.querySelector('.date').textContent = this.date;
+        newPost.querySelector('.card_image img').src = this.image;
+
+        return newPost;
+    }
+}
+const countArticles = document.getElementById('coutArticles');
+const popUpElement = document.getElementById("pop-up");
+const images = [
+        '../assets/blog1.jpeg', '../assets/blog2.jpeg', '../assets/blog3.jpeg', 
+        '../assets/blog4.jpeg', '../assets/blog5.jpeg', '../assets/blog6.jpeg', '../assets/blog7.jpeg'
+    ]; 
+
 function onStatistics() {
     // Вызов поп-апа 
-    const popUpElement = document.getElementById("pop-up");
+    countArticles.textContent = document.querySelectorAll('.article_blog').length;
     popUpElement.show();
 
     // Работа с подсчетом количества статей
-    const countArticles = document.getElementById('coutArticles');
-    countArticles.textContent = document.querySelectorAll('.article_blog').length;
 
     // Работа с коментами
     const countComment = document.getElementById('comment');
-    countComment.textContent = document.querySelectorAll('.commentArcicle').length;;
+    countComment.textContent = document.querySelectorAll('.commentArcicle').length;
     // console.log(count)
     // popUpElement.innerHTML = `<p>Всего статей на странице: ${count}</p>`
 
@@ -30,84 +60,155 @@ function toggleVisibility() {
     form.classList.toggle('hidden');
 }
 
-// Добавление новой статьи через template
-function newPublish(event) {
+function validateForm(title, content) {
+
     const titleInputElement = document.getElementById('title_input');
     const contentInputElement = document.getElementById('content_input');
     const titleError = document.getElementById('title-error');
     const contentError = document.getElementById('content-error');
-    const projectsList = document.querySelector('.projects_list');
-
-    const titleValue = titleInputElement.value.trim();
-    const contentValue = contentInputElement.value.trim();
-
+    
     titleError.textContent = "";
     contentError.textContent = "";
     titleInputElement.classList.remove('invalid');
     contentInputElement.classList.remove('invalid');
 
-    let hasError = false;
+    let isValid = true;
 
-    if (titleValue === '') {
+    if (title === '') {
         titleError.textContent = "Пожалуйста, введите заголовок статьи";
         titleInputElement.classList.add('invalid');
-        hasError = true;
+        isValid = false;
     }
 
-    if (contentValue === '') {
+    if (content === '') {
         contentError.textContent = "Пожалуйста, введите небольшое описание статьи";
         contentInputElement.classList.add('invalid');
-        hasError = true;
+        isValid = false;
     }
 
-    // если есть ошибка — выходим из функции и ничего не создаем
-    if (hasError) return;
-    // Время
-    const currentDate = new Date();
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = currentDate.toLocaleDateString('ru-RU', options);
-    
-    const images = [
-        '../assets/blog1.jpeg', '../assets/blog2.jpeg', '../assets/blog3.jpeg', 
-        '../assets/blog4.jpeg', '../assets/blog5.jpeg', '../assets/blog6.jpeg', '../assets/blog7.jpeg'
-    ]; 
-    const randomImage = images[Math.floor(Math.random() * images.length)];
+    return isValid;
 
-    // шаблон
-    const template = document.getElementById('article-template');
-    const newPost = template.content.cloneNode(true);
-
-    // удаление
-    const deleteBtn = newPost.querySelector('#delete-btn');
-    if (deleteBtn) {
-        deleteBtn.addEventListener('click', function() {
-            const article = this.closest('.article_blog');
-            if (article) {
-                article.remove();
-            }
-        });
-    }
-
-    newPost.querySelector('.date').textContent = formattedDate; 
-    newPost.querySelector('.post-title').textContent = titleValue;
-    const contentField = newPost.querySelector('.post-content');
-    if (contentField) contentField.textContent = contentValue;
-    
-    newPost.querySelector('.card_image img').src = randomImage;
-
-    projectsList.appendChild(newPost);
-    event.preventDefault()
-    titleInputElement.value = '';
-    contentInputElement.value = '';
-    
-    if (typeof toggleVisibility === "function") {
-        toggleVisibility();
-    }
 }
 
+// Добавление новой статьи в localStorage
+function newPublish(event) {
+
+    event.preventDefault();
+
+    const titleInputElement = document.getElementById('title_input');
+    const contentInputElement = document.getElementById('content_input');
+
+    const titleValue = titleInputElement.value.trim();
+    const contentValue = contentInputElement.value.trim();
+
+    if ( !validateForm(titleValue,contentValue)) {return;}
+
+    const elementsForm = event.target.querySelectorAll('input, textarea, button');
+    elementsForm.forEach(el => el.disabled = true);
+
+    setTimeout(() => {
+        // объект данных для сохранения
+        const articleData = {
+            id: Date.now(),
+            title: titleValue,
+            content: contentValue,
+            image: images[Math.floor(Math.random() * images.length)],
+            date: new Date().toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' })
+        };
+        const articles = JSON.parse(localStorage.getItem('my_posts')) || [];
+        
+        articles.push(articleData);
+        localStorage.setItem('my_posts', JSON.stringify(articles));
+        const scrollPos = window.scrollY;
+
+        elementsForm.forEach(el => el.disabled = false);
+        event.target.reset();
+
+        window.scrollTo(0, scrollPos);
+        
+        checkArticles();
+        setTimeout(() =>{
+            const allArticles = document.querySelectorAll('.article_blog');
+            const lastArticle = allArticles[allArticles.length - 1];
+            if (lastArticle) {
+                lastArticle.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                })
+                lastArticle.style.outline = "5px solid #ebd57e";
+                
+                setTimeout(() => {
+                    lastArticle.style.outline = "transparent";
+                }, 3000);
+            }
+            
+        },2700)
+    },1000)
+
+}
 
 // сброс формы
 const form = document.querySelector('#form-create-article')
   form.addEventListener('reset', function (evt) {
     console.log(evt)
-  })
+})
+
+// проверка наличия статей в localstorage
+function checkArticles(){
+ 
+    const projects_null_list = document.getElementById("projects_null_list");
+    const projects_list = document.getElementById("projects-list");
+
+    // добавляем лоадер
+    const loader = document.getElementById("loader");
+
+    // достаем данные из locslSt
+    const goodArticles = JSON.parse(localStorage.getItem('my_posts')) || [];
+
+    if (loader) loader.style.display = 'block';
+    projects_null_list.style.display = 'none';
+    setTimeout(() => {
+        if (loader) loader.style.display = "none";
+
+        const oldArticles = projects_list.querySelectorAll('.article_blog');
+        oldArticles.forEach(article => article.remove());
+
+        
+        if (goodArticles.length === 0) {
+            projects_null_list.style.display = 'block';
+        }
+        else {
+            goodArticles.forEach(article => {
+                const post = new Post(article.id, article.title, article.content, article.image, article.date);
+                projects_list.appendChild(post.createDOMElement());
+            });
+        }
+    },2500)
+}
+
+function deleteListItem(event) {
+    const deleteIcon = event.target.closest("#delete-btn");
+
+    const deletedElem = deleteIcon?.closest(".article_blog");
+  
+    if (deletedElem) {
+        const articleId = Number(deletedElem.dataset.id);
+
+    // удаляем с экрана
+    deletedElem.remove();
+
+    let articles = JSON.parse(localStorage.getItem('my_posts')) || [];
+    articles = articles.filter(a => a.id !== articleId);
+    localStorage.setItem('my_posts', JSON.stringify(articles));
+    // checkArticles();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', checkArticles);
+document.getElementById("projects-list").addEventListener("click", deleteListItem);
+const formElement = document.getElementById('form-create-article');
+
+if (formElement) {
+    formElement.addEventListener('submit', newPublish);
+}
+ 

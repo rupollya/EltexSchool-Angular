@@ -4,7 +4,6 @@
 @import "button_all.css";
 @import "additionally.css";
 @import "hobby.css";
-@import "contact.css";
 @import "certificate_and_ed.css";
 @import "statistics.css";
 
@@ -43,6 +42,13 @@ body {
     background-color: var(--bg-body);
     line-height: 1.6;
     /* background-color:#d5c5d929; */
+}
+
+input:disabled, 
+textarea:disabled, 
+button:disabled {
+    cursor: not-allowed; 
+    opacity: 0.6;        
 }
 
 a {
