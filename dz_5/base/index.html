@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/main.css">
+    <!-- логотип для вкладки -->
+    <link rel="icon" type="image/x-icon" href="../assets/logo.jpg">
+</head>
+<body>
+    <header class="menu">
+        <div class="logo">Портфолио</div>
+        <nav>
+            <ul class="menu_list">
+                <li><a href="index.html">Обо мне</a></li>
+                <li><a href="blog.html">Блог</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- кто я -->
+        <section class="about_me">
+            <div>
+                <h1>Привет, я Полина</h1>
+                <p>Я изучаю инструменты разработки несколько лет и планирую добиться такого же успеха как...</p>
+                <a>Обо мне <span class="arrow-icon">></span></a>
+            </div>
+            <div>
+                <img src="../assets/IMAGE.jpg" alt="Мое фото" width="400">
+            </div>
+        </section>
+        <!-- образование и сертификаты-->
+       <section class="education_combined">
+        
+            <h1 class="section_title">Образование</h1>
+            <div class="edu_grid_system">
+                <div class="edu_main_col">
+                    <div class="edu_card current">
+                        <div class="edu_header">
+                            <span class="edu_tag">Сейчас</span>
+                            <span class="edu_year">2025 — 2027</span>
+                        </div>
+                        <h3>Магистратура НГТУ</h3>
+                        <p>Прикладная математика и информатика</p>
+                    </div>
+
+                    <div class="edu_card">
+                        <div class="edu_header">
+                            <span class="edu_year">2021 — 2025</span>
+                        </div>
+                        <h3>Бакалавриат НГТУ</h3>
+                        <p>Прикладная математика и информатика</p>
+                        <div class="vkr_simple">
+                            <strong>ВКР:</strong> Адаптивное обучение на базе LLM
+                        </div>
+                    </div>
+                </div>
+                <div class="edu_side_col">
+                    <h4 class="mini_subtitle">Дополнительная база</h4>
+                    <div class="tags_wrapper">
+                        <div class="tag">SQL <span>Stepik</span></div>
+                        <div class="tag">Python <span>Stepik</span></div>
+                        <div class="tag">Selenium <span>Stepik</span></div>
+                        <div class="tag">QA Basic <span>Stepik</span></div>
+                        <div class="tag">Git <span>Этюд</span></div>
+                        <div class="tag">Layout <span>code.mu</span></div>
+                        <div class="tag">HTML/CSS <span>Stepik</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ссылки -->
+        <section class="articles">
+            <h1>Статьи</h1>
+            <div class="article">
+                <div>
+                    <a href="https://habr.com/ru/articles/986260/" target="_blank">Архитектура сложных форм</a><br>
+                    <b><h2>Vue3, Composition API</h2></b>
+                    <p>Представим, что на сайте страховой компании нужна форма для ввода данных о транспортном средстве.</p>
+                </div>
+                <img src="../assets/IMAGE_CITY.jpg" alt="Статья" class="article_img">
+            </div>
+            <div class="article">
+                <div class="article_content">
+                    <a href="https://habr.com/ru/companies/itsumma/articles/501680/" target="_blank">Ускорение сборки Docker-образов</a><br>
+                    <b><h2>Docker-образы</h2></b>
+                    <p>Прежде чем фича попадет на прод, в наше время сложных оркестраторов и CI/CD предстоит пройти долгий путь от коммита до тестов и доставки.</p>
+                </div>
+                <img src="../assets/IMAGE_CITY_BLUE.png" alt="Статья" class="article_img">
+                </div>
+            </div>
+            <a href="https://habr.com/ru/articles/" class="button_article">Посмотреть все статьи</a>
+        </section>
+        <section class="competencies">
+            <div class="skills">
+                <h1>Мои навыки</h1>
+                <div class="skills_list">
+                    <div>
+                        <h4>Frontend Core</h4>
+                        <p>HTML, CSS, JS, TS</p>
+                        <hr>
+                    </div>
+                    <div>
+                        <h4>Frameworks & State</h4>
+                        <p>Vue.js, Angular, Pinia</p>
+                        <hr>
+                    </div>
+                    <div>
+                        <h4>Backend & DB</h4>
+                        <p>Python, FastAPI, SQL</p>
+                        <hr>
+                    </div>
+                    <div>
+                        <h4>DevOps & Servers</h4>
+                        <p>Docker, Nginx, Swagger</p>
+                        <hr>
+                    </div>
+                    <div>
+                        <h4>Development Tools</h4>
+                        <p>Postman, VS Code, Vite</p>
+                        <hr>
+                    </div>
+                    <div>
+                        <h4>Design & UX</h4>
+                        <p>Figma, UI/UX, Style</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="work">
+                <div class="work_content">
+                    <h1>Моя карьера</h1>
+                    <p>На протяжении учебы я выполняла несколько проектов для университета. Сейчас, в рамках магистерской работы
+                       я разрабатываю отдельный сервис для компании связанной с спортом. 
+                    </p>
+                </div>
+                <div class="my_work">
+                    <div class="work_item">
+                        <div>
+                            <img src="../assets/logo_memo.svg" alt="icon" >
+                        </div>
+                        <div class="work_content">
+                            <h4>Менеджер заметок</h4>
+                            <a href="https://github.com/rupollya/first_project" target="_blank">GitHub</a>
+                            <p>Минималистичный сервис для заметок. Проект написан на Python/JS, HTML/CSS.</p>
+                        </div>
+                    </div>
+                    <div class="work_item">
+                        <div>
+                            <img src="../assets/logo_task.svg" alt="icon" >
+                        </div>
+                        <div class="work_content">
+                            <h4>Менеджер задач</h4>
+                            <a href="https://github.com/rupollya/vue_project" target="_blank">GitHub</a>
+                            <p>Приложение с раздельной архитектурой: фронтенд на Vue 3, бекенд на FastAPI + SQLModel.</p>
+                        </div>
+                    </div>
+                    <div class="work_item">
+                          <div>
+                            <img src="../assets/logo_dip.svg" alt="icon" >
+                        </div>
+                        <div class="work_content">
+                            <h4>Система обучения с LLM</h4>
+                            <a href="https://github.com/rupollya/diploma" target="_blank">GitHub</a>
+                            <p>Интеллектуальная система на базе Mistral AI, фронтенд на Vue 3, бекенд на FastAPI, контейнеризация в Docker.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+          <!-- хобби -->
+        <section class="hobby">
+            <div class="header_hobby">
+                <h1>Мои хобби</h1>
+                <p class="mini_subtitle">Иногда, хочется закрыть глаза и представить что ты потерялся где-то в горах.</p>
+            </div>
+
+            <div class="hobby_content">
+                <div class="hobby_card tall-1">
+                    <div class="card_inner">
+                        <img src="../assets/poster1.jpeg" alt="Лягушка">
+                        <div class="hobby_overlay_detailed">
+                            <div class="detailed_text_content">
+                                <span class="project_type">Мини бро</span>
+                                <h3>Frog Prince</h3>
+                                <p>Маленький квакатель, ждущий свою принцессу.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hobby_card tall-2">
+                    <div class="card_inner">
+                        <img src="../assets/poster2.png" alt="Учеба">
+                        <div class="hobby_overlay_detailed">
+                            <div class="detailed_text_content">
+                                <span class="project_type">Разработка</span>
+                                <h3>Development</h3>
+                                <p>Написание кода и улучшение внешнего вида.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hobby_card small-top">
+                    <div class="card_inner">
+                        <img src="../assets/poster3.png" alt="Город 1">
+                        <div class="hobby_overlay_detailed">
+                            <div class="detailed_text_content">
+                                <span class="project_type">Вязание</span>
+                                <h3>Bread</h3>
+                                <p>Порви нитку, психани и начни вязать заново (реальной фотки нет под рукой)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hobby_card small-bottom">
+                    <div class="card_inner">
+                        <img src="../assets/poster4.png" alt="Город 2">
+                        <div class="hobby_overlay_detailed">
+                            <div class="detailed_text_content">
+                                <span class="project_type">Путешествия</span>
+                                <h3>Travel</h3>
+                                <p>Горы, реки, леса, сноуборды, сплавы, что-угодно, лишь бы не сидеть дома.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="contacts">
+        <div class="footer_inf">
+            <div class="information">
+                <h1 class="mini_subtitle">Информация для связи</h1>
+                <p>Телефон: +7 777 777 77 77</p>
+                <p>Email: maschkovapolina@yandex.ru</p>
+                <div class="icon_contact">
+                    <a href="https://t.me/rupollya" target="_blank"><img src="../assets/telegram.svg" alt="Telegram"></a>
+                    <a href="https://vk.com/rupolll_ya" target="_blank"><img src="../assets/vk.svg" alt="vk"></a>
+                    <a href="https://www.tiktok.com/@whoisrupollya" target="_blank"><img src="../assets/tiktok.svg" alt="tt"></a>
+                </div>
+            </div>
+
+            <div class="form">
+                <div class="input_group">
+                    <label>EMAIL</label>
+                    <input type="email" placeholder="Напиши мне свой email...">
+                </div>
+
+                <div class="input_group">
+                    <label>СООБЩЕНИЕ</label>
+                    <textarea placeholder="Введи текст..."></textarea>
+                </div>
+
+                <button class="send_btn">Отправить</button>
+            </div>
+        </div>
+        <p class="inc">© 2026 Brand, Inc</p>
+    </footer>
+</body>
+</html>
