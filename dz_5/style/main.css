@@ -44,6 +44,13 @@ body {
     /* background-color:#d5c5d929; */
 }
 
+input:disabled, 
+textarea:disabled, 
+button:disabled {
+    cursor: not-allowed; 
+    opacity: 0.6;        
+}
+
 a {
     text-decoration: none;
     color: inherit;

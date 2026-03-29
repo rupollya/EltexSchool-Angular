@@ -25,6 +25,11 @@ class Post {
 }
 const countArticles = document.getElementById('coutArticles');
 const popUpElement = document.getElementById("pop-up");
+const images = [
+        '../assets/blog1.jpeg', '../assets/blog2.jpeg', '../assets/blog3.jpeg', 
+        '../assets/blog4.jpeg', '../assets/blog5.jpeg', '../assets/blog6.jpeg', '../assets/blog7.jpeg'
+    ]; 
+
 function onStatistics() {
     // Вызов поп-апа 
     countArticles.textContent = document.querySelectorAll('.article_blog').length;
@@ -98,27 +103,48 @@ function newPublish(event) {
 
     if ( !validateForm(titleValue,contentValue)) {return;}
 
-    const images = [
-        '../assets/blog1.jpeg', '../assets/blog2.jpeg', '../assets/blog3.jpeg', 
-        '../assets/blog4.jpeg', '../assets/blog5.jpeg', '../assets/blog6.jpeg', '../assets/blog7.jpeg'
-    ]; 
+    const elementsForm = event.target.querySelectorAll('input, textarea, button');
+    elementsForm.forEach(el => el.disabled = true);
 
-    // объект данных для сохранения
-    const articleData = {
-        id: Date.now(),
-        title: titleValue,
-        content: contentValue,
-        image: images[Math.floor(Math.random() * images.length)],
-        date: new Date().toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' })
-    };
+    setTimeout(() => {
+        // объект данных для сохранения
+        const articleData = {
+            id: Date.now(),
+            title: titleValue,
+            content: contentValue,
+            image: images[Math.floor(Math.random() * images.length)],
+            date: new Date().toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' })
+        };
+        const articles = JSON.parse(localStorage.getItem('my_posts')) || [];
+        
+        articles.push(articleData);
+        localStorage.setItem('my_posts', JSON.stringify(articles));
+        const scrollPos = window.scrollY;
 
-    // Очистка полей
-    event.target.reset();
+        elementsForm.forEach(el => el.disabled = false);
+        event.target.reset();
 
-    const articles = JSON.parse(localStorage.getItem('my_posts')) || [];
-    articles.push(articleData);
-    localStorage.setItem('my_posts', JSON.stringify(articles));
-    checkArticles();
+        window.scrollTo(0, scrollPos);
+        
+        checkArticles();
+        setTimeout(() =>{
+            const allArticles = document.querySelectorAll('.article_blog');
+            const lastArticle = allArticles[allArticles.length - 1];
+            if (lastArticle) {
+                lastArticle.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                })
+                lastArticle.style.outline = "5px solid #ebd57e";
+                
+                setTimeout(() => {
+                    lastArticle.style.outline = "transparent";
+                }, 3000);
+            }
+            
+        },2700)
+    },1000)
+
 }
 
 // сброс формы
@@ -129,25 +155,35 @@ const form = document.querySelector('#form-create-article')
 
 // проверка наличия статей в localstorage
 function checkArticles(){
+ 
     const projects_null_list = document.getElementById("projects_null_list");
     const projects_list = document.getElementById("projects-list");
+
+    // добавляем лоадер
+    const loader = document.getElementById("loader");
 
     // достаем данные из locslSt
     const goodArticles = JSON.parse(localStorage.getItem('my_posts')) || [];
 
-    if (goodArticles.length === 0) {
-        projects_null_list.style.display = 'block';
-        projects_list.innerHTML = '';
-    }
-    else {
-        projects_null_list.style.display = 'none';
-        projects_list.innerHTML = '';
+    if (loader) loader.style.display = 'block';
+    projects_null_list.style.display = 'none';
+    setTimeout(() => {
+        if (loader) loader.style.display = "none";
 
-        goodArticles.forEach(article => {
-            const post = new Post(article.id, article.title, article.content, article.image, article.date);
-            projects_list.appendChild(post.createDOMElement());
-        });
-    }
+        const oldArticles = projects_list.querySelectorAll('.article_blog');
+        oldArticles.forEach(article => article.remove());
+
+        
+        if (goodArticles.length === 0) {
+            projects_null_list.style.display = 'block';
+        }
+        else {
+            goodArticles.forEach(article => {
+                const post = new Post(article.id, article.title, article.content, article.image, article.date);
+                projects_list.appendChild(post.createDOMElement());
+            });
+        }
+    },2500)
 }
 
 function deleteListItem(event) {
@@ -164,7 +200,7 @@ function deleteListItem(event) {
     let articles = JSON.parse(localStorage.getItem('my_posts')) || [];
     articles = articles.filter(a => a.id !== articleId);
     localStorage.setItem('my_posts', JSON.stringify(articles));
-    checkArticles();
+    // checkArticles();
   }
 }
 
